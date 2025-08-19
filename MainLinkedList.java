@@ -16,18 +16,18 @@ public class MainLinkedList {
 
 
 		SinglyLinkedList<Integer> singlyLinkedList1=new SinglyLinkedList<Integer>();
-		Node<Integer> a=new Node<Integer>(10);
-		Node<Integer> b=new Node<Integer>(20);
-		Node<Integer> c=new Node<Integer>(30);
-		Node<Integer> d=new Node<Integer>(40);
-		Node<Integer> e=new Node<Integer>(50);
+		Node<Integer> node1=new Node<Integer>(10);
+		Node<Integer> node2=new Node<Integer>(20);
+		Node<Integer> node3=new Node<Integer>(30);
+		Node<Integer> node4=new Node<Integer>(40);
+		Node<Integer> node5=new Node<Integer>(50);
 
-		singlyLinkedList1.head=a;
-		a.next=b;
-		b.next=c;
-		c.next=d;
-		d.next=e;
-		e.next=c;
+		singlyLinkedList1.head=node1;
+		node1.next=node2;
+		node2.next=node3;
+		node3.next=node4;
+		node4.next=node5;
+		node5.next=node3;
 		System.out.println(singlyLinkedList1.hasLoop());//true
 
 		System.out.println("Element is found at position: "+singlyLinkedList.search(20));//Element is found at position: 3

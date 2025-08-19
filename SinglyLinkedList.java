@@ -3,11 +3,9 @@ package org.linkedlist;
 
 public class SinglyLinkedList<T>{
 
-
 	Node<T> head;
 
 	public void add(T data) {
-
 		if(head==null) {
 			head=new Node<T>(data);
 		}else {
@@ -17,22 +15,15 @@ public class SinglyLinkedList<T>{
 			}
 			temp.next=new Node<T>(data);
 		}
-
 	}
 
-
 	public void display() {
-
 		Node<T> temp=head;
 		while(temp!=null) {
-
 			System.out.print(temp.data);
-
 			if(temp.next!=null)
 				System.out.print("->");
-
 			temp=temp.next;
-
 		}
 		System.out.println();
 	}
