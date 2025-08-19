@@ -3,26 +3,19 @@ package org.linkedlist;
 
 public class SinglyLinkedList<T>{
 
-	class Node{
-		T data;
-		Node next;
 
-		public Node(T data) {
-			this.data=data;
-		}
-	}
-	Node head;
+	Node<T> head;
 
 	public void add(T data) {
 
 		if(head==null) {
-			head=new Node(data);
+			head=new Node<T>(data);
 		}else {
-			Node temp=head;
+			Node<T> temp=head;
 			while(temp.next!=null) {
 				temp=temp.next;
 			}
-			temp.next=new Node(data);
+			temp.next=new Node<T>(data);
 		}
 
 	}
@@ -30,7 +23,7 @@ public class SinglyLinkedList<T>{
 
 	public void display() {
 
-		Node temp=head;
+		Node<T> temp=head;
 		while(temp!=null) {
 
 			System.out.print(temp.data);
@@ -49,8 +42,8 @@ public class SinglyLinkedList<T>{
 			System.out.println("List is empty...");
 			return null;
 		}
-		Node temp=head;
-		Node prev=null;
+		Node<T> temp=head;
+		Node<T> prev=null;
 		while(temp.next!=null) {
 			prev=temp;
 			temp=temp.next;
@@ -66,9 +59,9 @@ public class SinglyLinkedList<T>{
 
 	//1. Reverse a Linked List
 	public void reverse() {
-		Node prev=null;
-		Node curr=head;
-		Node next=null;
+		Node<T> prev=null;
+		Node<T> curr=head;
+		Node<T> next=null;
 
 		while(curr!=null) {
 			next=curr.next;
@@ -81,8 +74,8 @@ public class SinglyLinkedList<T>{
 
 	//2.Detect a Cycle in a Linked List
 	public boolean hasLoop() {
-		Node slow=head;
-		Node fast=head;
+		Node<T> slow=head;
+		Node<T> fast=head;
 
 		while(fast!=null && fast.next!=null) {
 			slow=slow.next;
@@ -96,7 +89,7 @@ public class SinglyLinkedList<T>{
 	//5.Search in a Linked List
 	public int search(T key) {
 		int count=0;
-		Node temp=head;
+		Node<T> temp=head;
 		while(temp!=null) {
 			count++;
 			if(temp.data==key) {
