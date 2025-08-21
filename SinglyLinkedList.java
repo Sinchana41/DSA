@@ -1,7 +1,6 @@
 package org.linkedlist;
 
-
-public class SinglyLinkedList<T>{
+public class SinglyLinkedList<T extends Comparable<T>>{
 
 	Node<T> head;
 
@@ -17,6 +16,12 @@ public class SinglyLinkedList<T>{
 		}
 	}
 
+	public void addFirst(T data) {
+		Node<T> n=new Node<T>(data);
+		n.next=head;
+		head=n;
+	}
+
 	public void display() {
 		Node<T> temp=head;
 		while(temp!=null) {
@@ -26,6 +31,17 @@ public class SinglyLinkedList<T>{
 			temp=temp.next;
 		}
 		System.out.println();
+	}
+
+	public T deleteFirst() {
+
+		if(head==null) {
+			System.out.println("List is empty...");
+			return null;
+		}
+		T data =head.data;
+		head=head.next;
+		return data;
 	}
 
 	public T delete() {
@@ -44,7 +60,40 @@ public class SinglyLinkedList<T>{
 		}else {
 			prev.next=null;
 		}
+		return temp.data;
+	}
 
+	public int size() {
+		int count =0;
+		Node<T> temp=head;
+		while(temp!=null) {
+			temp=temp.next;
+			count++;
+		}
+		return count;
+	}
+
+	public boolean isEmpty() {
+		return size()==0;
+	}
+
+	public T getFirst() {
+		if(head==null) {
+			System.out.println("List is empty");
+			return null;
+		}
+		return head.data;
+	}
+
+	public T getLast() {
+		if(head==null) {
+			System.out.println("List is empty");
+			return null;
+		}
+		Node<T> temp=head;
+		while(temp.next!=null) {
+			temp=temp.next;
+		}
 		return temp.data;
 	}
 
@@ -89,5 +138,55 @@ public class SinglyLinkedList<T>{
 			temp=temp.next;
 		}
 		return-1;
+	}
+
+	public T getMiddleData() {
+		Node<T> slow=head;
+		Node<T> fast=head;
+		while(slow!=null && fast!=null) {
+			slow=slow.next;
+			fast=fast.next.next;
+		}
+		return slow.data;
+	}
+
+	public Node<T> getMiddleNode(Node<T> start, Node<T> end) {
+		if (start == null) 
+			return null;
+
+		Node<T> slow = start;
+		Node<T> fast = start.next;
+
+		while (fast != end) {
+			fast = fast.next;
+			if (fast != end) {
+				slow = slow.next;
+				fast = fast.next;
+			}
+		}
+		return slow;
+	}
+
+	//Binary search on Linked list
+	public boolean binarySearch(T key) {
+		Node<T> start = head;
+		Node<T> end = null;
+
+		while (start != end) {
+			Node<T> mid = getMiddleNode(start, end);
+			if (mid == null) 
+				return false;
+
+			int cmp = key.compareTo(mid.data); 
+
+			if (cmp == 0) {
+				return true; // found
+			} else if (cmp > 0) {
+				start = mid.next; // search right
+			} else {
+				end = mid; // search left
+			}
+		}
+		return false;
 	}
 }

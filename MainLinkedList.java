@@ -11,9 +11,15 @@ public class MainLinkedList {
 		singlyLinkedList.display();//10->20->30->40
 		singlyLinkedList.reverse();
 		singlyLinkedList.display();//40->30->20->10
+		singlyLinkedList.addFirst(5);
+		singlyLinkedList.display();//5->40->30->20->10
+		singlyLinkedList.deleteFirst();
+		singlyLinkedList.display();//40->30->20->10
+		System.out.println(singlyLinkedList.getMiddleData());//20
+		System.out.println(singlyLinkedList.isEmpty());//false
+		System.out.println(singlyLinkedList.getFirst());//40
 
 		System.out.println(singlyLinkedList.hasLoop());//false
-
 
 		SinglyLinkedList<Integer> singlyLinkedList1=new SinglyLinkedList<Integer>();
 		Node<Integer> node1=new Node<Integer>(10);
