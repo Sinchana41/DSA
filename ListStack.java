@@ -29,8 +29,6 @@ public class ListStack<T extends Comparable<T>> {
 		stack.display();
 	}
 
-
-
 	public int size() {
 		return stack.size();
 	}
