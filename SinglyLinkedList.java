@@ -22,6 +22,25 @@ public class SinglyLinkedList<T extends Comparable<T>>{
 		head=n;
 	}
 
+	public void addAtIndex(T data, int index) {
+		Node<T> n=new Node<T>(data);
+		if(index==0) {
+			n.next=head;
+			head=n;
+		}else {
+			Node<T> temp=head;
+			while(temp!=null && index>1) {
+				temp=temp.next;
+				index--;
+			}
+			if(temp==null) {
+				System.out.println("Index not in the range");
+			}
+			n.next=temp.next;
+			temp.next=n;
+		}
+	}
+
 	public void display() {
 		Node<T> temp=head;
 		while(temp!=null) {
@@ -34,7 +53,6 @@ public class SinglyLinkedList<T extends Comparable<T>>{
 	}
 
 	public T deleteFirst() {
-
 		if(head==null) {
 			System.out.println("List is empty...");
 			return null;
@@ -59,6 +77,33 @@ public class SinglyLinkedList<T extends Comparable<T>>{
 			head=null;
 		}else {
 			prev.next=null;
+		}
+		return temp.data;
+	}
+
+	public T deleteAtIndex(int index) {
+
+		if(head==null) {
+			System.out.println("List is empty..");
+			return null;
+		}
+		if(index==0) {
+			T data=head.data;
+			head=null;
+			return data;
+		}
+		Node<T> temp=head;
+		Node<T> prev=null;
+		while(temp!=null && index>0) {
+			prev=temp;
+			temp=temp.next;
+			index--;
+		}
+		if(temp==null) {
+			System.out.println("Index not in the range..");
+			return null;
+		}else {
+			prev.next=temp.next;
 		}
 		return temp.data;
 	}
